@@ -1,0 +1,17 @@
+{
+  "name": "assignment-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "npx cypress run --spec    'cypress/e2e/3-tricentis/login.cy.js'",
+    "cypress:tricentis": "npx cypress run --spec    'cypress/e2e/3-tricentis/**.*'"
+  },
+  "author": "anisanursekararum",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.8.1"
+  },
+  "dependencies": {}
+}
