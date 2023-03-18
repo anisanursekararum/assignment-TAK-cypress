@@ -4,5 +4,7 @@
     "epost" : "sharon_post",
     "mobile" : "342110",
     "username" : "minaSharon",
-    "password" : "Pa$$w0rd!"
+    "password" : "Pa$$w0rd!",
+    "wrong_password" : "Password123",
+    "static_username" : "kazuha"
 }
