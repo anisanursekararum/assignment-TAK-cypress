@@ -1,5 +1,75 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
+})
+
+import loginPage from "../../support/login-page"
+const loginInput = require('../../fixtures/data.json')
+
 describe('Login Itera', () => {
-  it('passes', () => {
-    cy.visit('https://itera-qa.azurewebsites.net/')
+  const LoginPage = new loginPage()
+  it('success login', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')
+    cy.get(LoginPage.username).type(loginInput.static_username)
+    cy.get(LoginPage.password).type(loginInput.password)
+    cy.get(LoginPage.login_button).click()
+    cy.get('h3')
+      .contains('Welcome '+ loginInput.static_username)
+      .should('match', 'h3')
   })
+  it('failed login empty form', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')
+    cy.get(LoginPage.login_button).click()
+    cy.get(LoginPage.danger_empty).should('contain', 'Wrong username or password')
+    cy.get(LoginPage.password_val).should('contain', 'Please enter password')
+  })
+  it('failed login invalid username password', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')    
+    cy.get(LoginPage.username).type(loginInput.invalid_username)
+    cy.get(LoginPage.password).type(loginInput.password)
+    cy.get(LoginPage.login_button).click()
+    cy.get(LoginPage.danger_empty).should('contain', 'Wrong username or password')
+  })
+  it('failed login empty username', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')    
+    cy.get(LoginPage.password).type(loginInput.password)
+    cy.get(LoginPage.login_button).click()
+    cy.get(LoginPage.danger_empty).should('contain', 'Wrong username or password')
+  })
+  it('failed login empty password', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')    
+    cy.get(LoginPage.username).type(loginInput.static_username)
+    cy.get(LoginPage.login_button).click()
+    cy.get(LoginPage.danger_empty).should('contain', 'Wrong username or password')
+  })
+  it('klik not registered', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')    
+    cy.get(LoginPage.not_registered).click()
+    cy.url().should('include', '/UserRegister/NewUser')
+  })
+  it('success logout', () => {
+    cy.visit('/')
+    cy.get(LoginPage.login).click()
+    cy.url().should('include', '/Login')
+    cy.get(LoginPage.username).type(loginInput.static_username)
+    cy.get(LoginPage.password).type(loginInput.password)
+    cy.get(LoginPage.login_button).click()
+    cy.get('h3')
+      .contains('Welcome '+ loginInput.static_username)
+      .should('match', 'h3')
+    cy.get(LoginPage.logout).click()
+    cy.url().should('include', '/Login')
+  })
+
 })

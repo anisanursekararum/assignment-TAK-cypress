@@ -6,5 +6,6 @@
     "username" : "minaSharon",
     "password" : "Pa$$w0rd!",
     "wrong_password" : "Password123",
-    "static_username" : "kazuha"
+    "static_username" : "kazuha",
+    "invalid_username" : "kas2344109@"
 }
