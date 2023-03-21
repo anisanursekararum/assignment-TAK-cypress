@@ -1,0 +1,42 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false
+  })
+
+import dashboardPage from "../../support/dashboard-page"
+const dashboardInput = require('../../fixtures/data.json')
+  
+describe('Dashboard Itera', () => {
+    const DashboardPage = new dashboardPage()
+    it('dashboard', () => {
+      cy.visit('/')
+      cy.get(DashboardPage.login).click()
+      cy.url().should('include', '/Login')
+      cy.get(DashboardPage.username).type(dashboardInput.static_username)
+      cy.get(DashboardPage.password).type(dashboardInput.password)
+      cy.get(DashboardPage.login_button).click()
+      //cy.get('form').submit()
+      cy.get(DashboardPage.success_login)
+        .contains('Welcome '+ dashboardInput.static_username)
+        .should('match', 'h3')
+      cy.get(DashboardPage.logout).as('links')
+        .should('have.class', 'nav-link')
+        .and('have.attr', 'href')
+        .and('include', 'LogOut')
+      cy.get(DashboardPage.wording_cust)
+        .should('have.text', 'Customer Details')
+      cy.get(DashboardPage.create_button).as('links')
+        .should('have.class', 'btn btn-primary')
+        .and('have.attr', 'href')
+        .and('include', 'Create')
+      cy.get(DashboardPage.search_bar)
+        .should('have.id', 'searching')
+        .and('have.attr', 'name', 'searching')
+        .and('have.attr', 'placeholder', 'Search Name or Email')
+        //.and('be.a', 'string')
+        .invoke('text')
+      cy.get(DashboardPage.search_input)
+        .should('have.class', 'btn btn-secondary my-2 my-sm-0')
+        .and('have.value', 'Search')
+        .and('have.attr', 'type', 'submit')
+    }) 
+})
