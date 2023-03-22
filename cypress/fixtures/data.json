@@ -7,5 +7,26 @@
     "password" : "Pa$$w0rd!",
     "wrong_password" : "Password123",
     "static_username" : "kazuha",
-    "invalid_username" : "kas2344109@"
+    "invalid_username" : "kas2344109@",
+    "cust_name" : "ryujin shin ",
+    "cust_company" : "yulji medical center",
+    "cust_address" : "Jalan Bukit Mawar 12",
+    "cust_city" : "Bandung",
+    "cust_phone" : "081234567890",
+    "cust_email" : "shin.ryujin@mail.com",
+    "detail_name" : "Name",
+    "detail_name_contain" : "Sergio Koss",
+    "detail_company" : "Company",
+    "detail_company_contain" : "Pagac - Yost",
+    "detail_address" : "Address",
+    "detail_address_contain" : "069 Lilliana Summit",
+    "detail_city" : "City",
+    "detail_city_contain" : "New Lucieborough",
+    "detail_phone" : "Phone",
+    "detail_phone_contain" : "1-339-563-7238 x8106",
+    "detail_email" : "Email",
+    "detail_email_contain" : "Tristian_Hauck45@yahoo.com",
+    "detail_edit_button" : "Edit",
+    "detail_back_button" : "Back to List"
+
 }

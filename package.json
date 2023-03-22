@@ -13,5 +13,7 @@
   "devDependencies": {
     "cypress": "^12.8.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dayjs": "^1.11.7"
+  }
 }
