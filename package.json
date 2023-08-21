@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "npx cypress run --spec    'cypress/e2e/3-tricentis/login.cy.js'",
-    "cypress:tricentis": "npx cypress run --spec    'cypress/e2e/3-tricentis/**.*'"
+    "cypress:tricentis": "npx cypress run --spec    'cypress/e2e/3-tricentis/**.*'",
+    "cypress:open": "cypress open"
   },
   "author": "anisanursekararum",
   "license": "ISC",
